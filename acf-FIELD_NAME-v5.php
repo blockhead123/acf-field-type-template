@@ -29,7 +29,7 @@ class acf_field_FIELD_NAME extends acf_field {
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
 		
-		$this->label = __('FIELD_LABEL', 'acf-FIELD_NAME');
+		$this->label = __('FIELD_LABEL', 'acf-'.$this->name);
 		
 		
 		/*
@@ -54,7 +54,7 @@ class acf_field_FIELD_NAME extends acf_field {
 		*/
 		
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'acf-FIELD_NAME'),
+			'error'	=> __('Error! Please enter a higher value', 'acf-'.$this->name),
 		);
 		
 				
@@ -90,8 +90,8 @@ class acf_field_FIELD_NAME extends acf_field {
 		*/
 		
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Font Size','acf-FIELD_NAME'),
-			'instructions'	=> __('Customise the input font size','acf-FIELD_NAME'),
+			'label'			=> __('Font Size','acf-'.$this->name),
+			'instructions'	=> __('Customise the input font size','acf-'.$this->name),
 			'type'			=> 'number',
 			'name'			=> 'font_size',
 			'prepend'		=> 'px',
@@ -161,13 +161,13 @@ class acf_field_FIELD_NAME extends acf_field {
 		
 		
 		// register & include JS
-		wp_register_script( 'acf-input-FIELD_NAME', "{$dir}js/input.js" );
+		wp_register_script( 'acf-input-'.$this->name, "{$dir}js/input.js" );
 		wp_enqueue_script('acf-input-FIELD_NAME');
 		
 		
 		// register & include CSS
-		wp_register_style( 'acf-input-FIELD_NAME', "{$dir}css/input.css" ); 
-		wp_enqueue_style('acf-input-FIELD_NAME');
+		wp_register_style( 'acf-input-'.$this->name, "{$dir}css/input.css" ); 
+		wp_enqueue_style('acf-input-'.$this->name);
 		
 		
 	}
@@ -427,7 +427,7 @@ class acf_field_FIELD_NAME extends acf_field {
 		// Advanced usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
-			$valid = __('The value is too little!','acf-FIELD_NAME'),
+			$valid = __('The value is too little!','acf-'.$this->name),
 		}
 		
 		
